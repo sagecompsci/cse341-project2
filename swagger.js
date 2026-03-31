@@ -1,15 +1,26 @@
 const swaggerAutogen = require("swagger-autogen");
-const fs = require("fs")
+const fs = require("fs");
+require("dotenv").config();
 
 const doc = {
     info: {
         title: "My API",
         description: "Project 2 "
     },
-    host: "cse341-project2-l43n.onrender.com",
+    host: process.env.PROD,
     schemes: [
         "https",
-    ]
+        "http"
+    ],
+    components: {
+        securitySchemes: {
+            bearerAuth: {
+                type: "http",
+                scheme: "bearer",
+                bearerFormat: "JWT"
+            }
+        }
+    }
 };
 
 const outputFile = "./swagger.json";
