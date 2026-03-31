@@ -31,7 +31,8 @@ app.use(passport.session());
 
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((user, done) => done(null, user));
-
+console.log("CLIENT ID:", process.env.GOOGLE_CLIENT_ID);
+console.log("CLIENT SECRET:", process.env.GOOGLE_CLIENT_SECRET);
 passport.use(new GoogleStrategy ({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
